@@ -1,0 +1,6 @@
+[package]
+name = "tiny_language"
+version = "0.1.0"
+authors = ["nakaly <ryosuke.nakamura@gmail.com>"]
+
+[dependencies]
