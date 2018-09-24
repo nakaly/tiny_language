@@ -5,7 +5,8 @@ fn main() {
     if args.len() == 1 {
         panic!("at least one arg is required")
     }
-    let p = args.get(1).unwrap();
+    parse(args.get(1).unwrap());
+}
 
 fn parse(input: &str) -> u32 {
     let mut code = input;
@@ -37,11 +38,17 @@ fn eval(code:  & mut &str) -> u32 {
             return 0
         }
     }
-    println!("value: {}", value);
-    println!("index: {}", index);
+    println!("number?: {:?}", &code[..pos+1]);
+    println!("number: {:?}", num);
+    *code = &code[pos..];
+    num
 }
 
-fn eval(_p: String, i:  usize) -> (i32,  usize) {
-//    println!("debug: {}", *i + 1 );
-    (0, i + 1)
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn test() {
+        use parse;
+        assert_eq!(parse("1234"), 1234);
+    }
 }
